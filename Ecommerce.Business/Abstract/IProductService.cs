@@ -11,6 +11,6 @@ namespace Ecommerce.Business.Abstract
         List<Product> GetByCategory(int categoryId);
         void Add(Product product);
         void Update(Product product);
-        void Delete(int productId);
+        void Delete(Product product);//int productId
     }
 }

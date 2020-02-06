@@ -1,7 +1,22 @@
-﻿
+﻿@model Ecommerce.MvcWebUI.Models.ProductListViewModel
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Ürünler</h2>
 
+<table class="table table-responsive">
+    <tr>
+        <td>Ürün Adı</td>
+        <td>Fiyatı</td>
+        <td>Stok</td>
+    </tr>
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>@item.ProductName</td>
+            <td>@item.UnitPrice</td>
+            <td>@item.UnitsInStock</td>
+        </tr>
+    }
+</table>

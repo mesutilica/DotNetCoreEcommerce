@@ -1,0 +1,14 @@
+﻿@model Ecommerce.MvcWebUI.Models.CategoryListViewModel
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>Kategoriler</h2>
+
+<ul class="list-group">
+
+    @foreach (var item in Model.Categories)
+    {
+        <li class="list-group-item"><a href="/product/index?category=@item.CategoryId">@item.CategoryName</a></li>
+    }
+</ul> 

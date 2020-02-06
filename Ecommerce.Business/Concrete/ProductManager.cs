@@ -19,9 +19,9 @@ namespace Ecommerce.Business.Concrete
             _productDal.Add(product);
         }
 
-        public void Delete(int productId)
+        public void Delete(Product product)//int productId
         {
-            _productDal.Delete(productId);
+            _productDal.Delete(product);//productId
         }
 
         public List<Product> GetAll()
@@ -31,7 +31,7 @@ namespace Ecommerce.Business.Concrete
 
         public List<Product> GetByCategory(int categoryId)
         {
-            return _productDal.GetList(p => p.CategoryId == categoryId);
+            return _productDal.GetList(p => p.CategoryId == categoryId || categoryId==0);
         }
 
         public void Update(Product product)
