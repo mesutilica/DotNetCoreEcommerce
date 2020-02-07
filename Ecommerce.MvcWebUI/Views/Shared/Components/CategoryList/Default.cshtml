@@ -9,6 +9,11 @@
 
     @foreach (var item in Model.Categories)
     {
-        <li class="list-group-item"><a href="/product/index?category=@item.CategoryId">@item.CategoryName</a></li>
+        var clas = "list-group-item";
+        if (item.CategoryId == Model.CurrentCategory)
+        {
+            clas += " active";
+        }
+        <li class="@clas"><a href="/product/index?category=@item.CategoryId">@item.CategoryName</a></li>
     }
 </ul> 

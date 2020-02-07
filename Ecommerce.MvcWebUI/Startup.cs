@@ -7,6 +7,7 @@ using Ecommerce.Business.Concrete;
 using Ecommerce.DataAccess.Abstract;
 using Ecommerce.DataAccess.Concrete.EntityFramework;
 using Ecommerce.MvcWebUI.Middlewares;
+using Ecommerce.MvcWebUI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -41,6 +42,11 @@ namespace Ecommerce.MvcWebUI
             services.AddScoped<IProductDal, EfProductDal>();//ProductManager ın çalışması için de IProductDal gerekecek o istenince EfProductDal yolla
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<ICategoryDal, EfCategoryDal>();
+            services.AddSingleton<ICartSessionService, CartSessionService>();
+            services.AddSingleton<ICartService, CartService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSession();//uygulamada session kullanabilmek için bu tanımlamayı yapmalıyız
+            services.AddDistributedMemoryCache();//sessionları hafızada tutmaya izin veren kısım, bunu yazmazsak uygulamada session kullanınca hata verir
             services.AddMvc();//.SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
         }
 
@@ -60,6 +66,7 @@ namespace Ecommerce.MvcWebUI
             app.UseCookiePolicy();
             app.UseFileServer();
             app.UseNodeModules(env.ContentRootPath);
+            app.UseSession();//uygulamada session kullanacağımızı bildirdik
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

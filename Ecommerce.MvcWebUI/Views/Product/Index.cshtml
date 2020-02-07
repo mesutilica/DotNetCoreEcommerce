@@ -10,6 +10,7 @@
         <td>Ürün Adı</td>
         <td>Fiyatı</td>
         <td>Stok</td>
+        <td></td>
     </tr>
     @foreach (var item in Model.Products)
     {
@@ -17,6 +18,8 @@
             <td>@item.ProductName</td>
             <td>@item.UnitPrice</td>
             <td>@item.UnitsInStock</td>
+            <td><a class="btn btn-xs" asp-controller="Cart" asp-action="AddToCart" asp-route-ProductId="@item.ProductId">Sepete Ekle</a></td>
         </tr>
     }
 </table>
+<product-list-pager current-category="@Model.CurrentCategory" current-page="@Model.CurrentPage" page-count="@Model.PageCount" page-size="@Model.PageSize"></product-list-pager>

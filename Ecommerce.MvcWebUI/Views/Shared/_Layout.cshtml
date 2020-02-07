@@ -43,6 +43,10 @@
     <div class="container-fluid body-content">
         <div class="col-md-3">@await  Component.InvokeAsync("CategoryList")</div>
         <div class="col-md-9">
+            @if(TempData["message"] != null)
+            {
+                <div class="alert alert-info" role="alert">@TempData["message"]</div>
+            }
             @RenderBody()
         </div>
         <hr />
