@@ -1,9 +1,7 @@
-﻿using DotNetCoreEcommerce.Northwind.Entities.Concrete;
-using Ecommerce.Business.Abstract;
+﻿using Ecommerce.Business.Abstract;
 using Ecommerce.DataAccess.Abstract;
-using System;
+using Ecommerce.Entities.Concrete;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Ecommerce.Business.Concrete
 {

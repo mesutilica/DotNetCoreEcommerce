@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DotNetCoreEcommerce.Northwind.Entities.Concrete
+namespace Ecommerce.Entities.Concrete
 {
     public class ShippingDetails
     {

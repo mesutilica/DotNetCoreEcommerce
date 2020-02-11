@@ -1,4 +1,4 @@
-﻿using DotNetCoreEcommerce.Northwind.Entities.Concrete;
+﻿using Ecommerce.Entities.Concrete;
 using System.Collections.Generic;
 
 namespace Ecommerce.Business.Abstract

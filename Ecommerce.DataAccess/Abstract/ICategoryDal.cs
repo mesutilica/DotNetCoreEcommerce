@@ -1,5 +1,5 @@
 ﻿using Core.DataAccess;
-using DotNetCoreEcommerce.Northwind.Entities.Concrete;
+using Ecommerce.Entities.Concrete;
 
 namespace Ecommerce.DataAccess.Abstract
 {

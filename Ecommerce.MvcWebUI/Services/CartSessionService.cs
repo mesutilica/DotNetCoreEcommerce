@@ -1,4 +1,4 @@
-﻿using DotNetCoreEcommerce.Northwind.Entities.Concrete;
+﻿using Entities.Concrete;
 using Ecommerce.MvcWebUI.ExtensionMethods;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -28,7 +28,7 @@ namespace Ecommerce.MvcWebUI.Services
 
         public void SetCart(Cart cart)
         {
-            _httpContextAccessor.HttpContext.Session.SetObject("cart", new Cart());
+            _httpContextAccessor.HttpContext.Session.SetObject("cart", cart);
         }
     }
 }

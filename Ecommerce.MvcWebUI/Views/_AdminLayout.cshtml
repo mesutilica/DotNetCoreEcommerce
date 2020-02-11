@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
+
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Ecommerce.MvcWebUI</title>
-
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -17,49 +17,43 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Ecommerce.MvcWebUI</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a></li>
-                    <li><a asp-area="" asp-controller="Product" asp-action="Index">Ürünler</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item dropdown">
-                        
-                        @await Component.InvokeAsync("CartSummary")
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div class="col-md-12">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Admin Panel</a>
+                </div>
 
-    <partial name="_CookieConsentPartial" />
-
-    <div class="container-fluid body-content">
-        <div class="col-md-3">@await  Component.InvokeAsync("CategoryList")</div>
-        <div class="col-md-9">
-            @if(TempData["message"] != null)
-            {
-                <div class="alert alert-info" role="alert">@TempData["message"]</div>
-            }
-            @RenderBody()
-        </div>
-        <hr />
-        <footer>
-            <p>&copy; 2020 - Ecommerce.MvcWebUI</p>
-        </footer>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a asp-controller="Admin" asp-action="Index">Ürün Yönetimi <span class="sr-only">(current)</span></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kullanıcı <span class="caret"></span></a>
+                            @*@await Component.InvokeAsync("UserSummary")*@
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
     </div>
+    <div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-info" role="alert">@TempData["message"]</div>
+        }
+        @RenderBody()
+    </div>
+    <div class="col-md-12"></div>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -85,7 +79,5 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
-    @RenderSection("Scripts", required: false)
 </body>
 </html>

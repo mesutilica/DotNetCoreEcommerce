@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace DotNetCoreEcommerce.Northwind.Entities.Concrete
+namespace Entities.Concrete
 {
     public class Cart
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities;
 
-namespace DotNetCoreEcommerce.Northwind.Entities.Concrete
+namespace Ecommerce.Entities.Concrete
 {
     public class Category:IEntity
     {

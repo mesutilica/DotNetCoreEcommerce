@@ -1,4 +1,4 @@
-﻿using DotNetCoreEcommerce.Northwind.Entities.Concrete;
+﻿using Entities.Concrete;
 using Ecommerce.Business.Abstract;
 using Ecommerce.Entities.Concrete;
 using System;

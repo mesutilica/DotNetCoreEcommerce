@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace DotNetCoreEcommerce.Northwind.Entities.Concrete
+namespace Entities.Concrete
 {
     public class CartLine
     {

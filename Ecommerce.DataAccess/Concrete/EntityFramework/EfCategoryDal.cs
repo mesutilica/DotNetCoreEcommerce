@@ -1,6 +1,7 @@
 ﻿using Core.DataAccess.EntityFramework;
-using DotNetCoreEcommerce.Northwind.Entities.Concrete;
+using Entities.Concrete;
 using Ecommerce.DataAccess.Abstract;
+using Ecommerce.Entities.Concrete;
 
 namespace Ecommerce.DataAccess.Concrete.EntityFramework
 {

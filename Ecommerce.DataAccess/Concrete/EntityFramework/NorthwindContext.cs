@@ -1,5 +1,4 @@
-﻿using DotNetCoreEcommerce.Northwind.Entities.Concrete;
-using Ecommerce.Entities.Concrete;
+﻿using Ecommerce.Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.DataAccess.Concrete.EntityFramework
