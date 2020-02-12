@@ -6,12 +6,15 @@ using Ecommerce.Business.Abstract;
 using Ecommerce.Business.Concrete;
 using Ecommerce.DataAccess.Abstract;
 using Ecommerce.DataAccess.Concrete.EntityFramework;
+using Ecommerce.MvcWebUI.Entities;
 using Ecommerce.MvcWebUI.Middlewares;
 using Ecommerce.MvcWebUI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -44,6 +47,10 @@ namespace Ecommerce.MvcWebUI
             services.AddScoped<ICategoryDal, EfCategoryDal>();
             services.AddSingleton<ICartSessionService, CartSessionService>();
             services.AddSingleton<ICartService, CartService>();
+            services.AddDbContext<CustomIdentityDbContext>(options => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Northwind;Trusted_Connection=true"));
+            services.AddIdentity<CustomIdentityUser, CustomIdentityRole>()
+                .AddEntityFrameworkStores<CustomIdentityDbContext>()
+                .AddDefaultTokenProviders();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSession();//uygulamada session kullanabilmek için bu tanımlamayı yapmalıyız
             services.AddDistributedMemoryCache();//sessionları hafızada tutmaya izin veren kısım, bunu yazmazsak uygulamada session kullanınca hata verir
@@ -66,6 +73,7 @@ namespace Ecommerce.MvcWebUI
             app.UseCookiePolicy();
             app.UseFileServer();
             app.UseNodeModules(env.ContentRootPath);
+            app.UseIdentity();
             app.UseSession();//uygulamada session kullanacağımızı bildirdik
             app.UseMvc(routes =>
             {

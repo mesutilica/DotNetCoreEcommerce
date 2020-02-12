@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Ecommerce.Business.Abstract;
 using Ecommerce.Entities.Concrete;
 using Ecommerce.MvcWebUI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.MvcWebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private IProductService _productService;
